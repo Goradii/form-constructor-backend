@@ -9,6 +9,9 @@ SA_CONNECTION_STRING = os.getenv('SA_CONNECT_STRING', 'sqlite+aiosqlite:///../db
 async_engine = create_async_engine(
     SA_CONNECTION_STRING,
     echo=False,
+    pool_size=6,
+    max_overflow=10,
+    connect_args={'server_settings': {'application_name': 'api_app'}},
 )
 async_session = sessionmaker(async_engine, expire_on_commit=False, class_=AsyncSession)
 
