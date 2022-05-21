@@ -1,13 +1,11 @@
 import os
 import sqlalchemy as sa
-from sqlalchemy import create_engine
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
 CURRENT_TIMESTAMP = 'CURRENT_TIMESTAMP'
 SA_CONNECTION_STRING = os.getenv('SA_CONNECT_STRING', 'sqlite+aiosqlite:///../db/forms_constructor.db')
 
-engine = create_engine(SA_CONNECTION_STRING)
 async_engine = create_async_engine(
     SA_CONNECTION_STRING,
     echo=False,
@@ -33,6 +31,3 @@ class Answer(Base):
     answer_data = sa.Column(sa.JSON())
     form = relationship(Form.__name__, back_populates='answers')
 
-
-if __name__ == '__main__':
-    Base.metadata.create_all(engine)
