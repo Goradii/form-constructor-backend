@@ -13,7 +13,7 @@ async_engine = create_async_engine(
     max_overflow=10,
     connect_args={'server_settings': {'application_name': 'api_app'}},
 )
-async_session = sessionmaker(async_engine, expire_on_commit=False, class_=AsyncSession)
+async_session = sessionmaker(async_engine, expire_on_commit=False, statement_cache_size=0, class_=AsyncSession)
 
 Base = declarative_base()
 
