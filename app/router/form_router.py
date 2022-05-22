@@ -1,11 +1,11 @@
+from fastapi import Depends
 from fastapi_jsonrpc import Entrypoint
+
 from app.schemas.form_schema import FormSchema
 from app.dals.form_dal import FormDAL
 from app.dals.answer_dal import AnswerDAL
-from app.schemas.answer_schema import AnswerFormSchema, FormAnswersResponseSchema, AnswerResponseSchema
+from app.schemas.answer_schema import AnswerFormSchema, AnswerResponseSchema
 from app.depends.dependencies import get_dal
-from fastapi import Depends
-
 
 api_v1 = Entrypoint('/jrpc/v1/forms')
 

@@ -1,4 +1,5 @@
 import os
+
 import sqlalchemy as sa
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
@@ -11,7 +12,6 @@ async_engine = create_async_engine(
     echo=False,
 )
 async_session = sessionmaker(async_engine, expire_on_commit=False,  class_=AsyncSession)
-
 Base = declarative_base()
 
 
@@ -30,4 +30,3 @@ class Answer(Base):
     form_uid = sa.Column(sa.ForeignKey('forms.uid'))
     answer_data = sa.Column(sa.JSON())
     form = relationship(Form.__name__, back_populates='answers')
-

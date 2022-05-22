@@ -3,7 +3,7 @@ from app.router.form_router import api_v1
 from fastapi.middleware.cors import CORSMiddleware
 
 
-app = jsonrpc.API(docs_url="/", redoc_url=None)
+app = jsonrpc.API(docs_url="/")
 
 app.bind_entrypoint(api_v1)
 
@@ -17,4 +17,4 @@ app.add_middleware(
 
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run('app.main:app', port=5000, access_log=False)
+    uvicorn.run('app.main:app', port=8888, access_log=True)
