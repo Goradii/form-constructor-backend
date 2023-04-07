@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "form-constructor-backend"
+version = "0.1.0"
+description = ""
+authors = ["Gleb Radin <gleb.rad@gmail.com>"]
+readme = "README.md"
+packages = [{include = "form_constructor_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.95.0"
+uvicorn = "^0.21.1"
+asyncpg = "^0.27.0"
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.7"}
+
+[tool.poetry.group.dev.dependencies]
+aiosqlite = "^0.18.0"
+wemake-python-styleguide = "^0.17.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
